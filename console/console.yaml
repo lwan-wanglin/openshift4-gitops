@@ -7,4 +7,4 @@ metadata:
     argocd.argoproj.io/sync-options: Prune=false
 spec:
   authentication:
-    logoutRedirect: "https://www.baidu.com"
+    logoutRedirect: "https://google.com"
