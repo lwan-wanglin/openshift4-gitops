@@ -2,29 +2,29 @@ apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
   labels:
-    machine.openshift.io/cluster-api-cluster: lwan0203-1-v84dx
-  name: lwan0203-1-v84dx-additional-compute
+    machine.openshift.io/cluster-api-cluster: lwan0211-1-55zfj
+  name: lwan0211-1-55zfj-additional-compute
   namespace: openshift-machine-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      machine.openshift.io/cluster-api-cluster: lwan0203-1-v84dx
+      machine.openshift.io/cluster-api-cluster: lwan0211-1-55zfj
       machine.openshift.io/cluster-api-machine-role: worker
       machine.openshift.io/cluster-api-machine-type: worker
-      machine.openshift.io/cluster-api-machineset: lwan0203-1-v84dx-worker-us-east-2c
+      machine.openshift.io/cluster-api-machineset: lwan0211-1-55zfj-worker-us-east-2c
   template:
     metadata:
       labels:
-        machine.openshift.io/cluster-api-cluster: lwan0203-1-v84dx
+        machine.openshift.io/cluster-api-cluster: lwan0211-1-55zfj
         machine.openshift.io/cluster-api-machine-role: worker
         machine.openshift.io/cluster-api-machine-type: worker
-        machine.openshift.io/cluster-api-machineset: lwan0203-1-v84dx-worker-us-east-2c
+        machine.openshift.io/cluster-api-machineset: lwan0211-1-55zfj-worker-us-east-2c
     spec:
       providerSpec:
         value:
           ami:
-            id: ami-04a79d8d7cfa540cc
+            id: ami-0a2dc10123f9c6987
           apiVersion: awsproviderconfig.openshift.io/v1beta1
           blockDevices:
           - ebs:
@@ -35,7 +35,7 @@ spec:
             name: aws-cloud-credentials
           deviceIndex: 0
           iamInstanceProfile:
-            id: lwan0203-1-v84dx-worker-profile
+            id: lwan0211-1-55zfj-worker-profile
           instanceType: m4.large
           kind: AWSMachineProviderConfig
           placement:
@@ -45,14 +45,14 @@ spec:
           - filters:
             - name: tag:Name
               values:
-              - lwan0203-1-v84dx-worker-sg
+              - lwan0211-1-55zfj-worker-sg
           subnet:
             filters:
             - name: tag:Name
               values:
-              - lwan0203-1-v84dx-private-us-east-2c
+              - lwan0211-1-55zfj-private-us-east-2c
           tags:
-          - name: kubernetes.io/cluster/lwan0203-1-v84dx
+          - name: kubernetes.io/cluster/lwan0211-1-55zfj
             value: owned
           userDataSecret:
             name: worker-user-data
