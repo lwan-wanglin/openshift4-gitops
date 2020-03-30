@@ -1,32 +1,67 @@
-kind: "DeploymentConfig"
-apiVersion: "v1"
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
 metadata:
-  name: "frontend"
+  creationTimestamp: "2020-03-30T09:27:41Z"
+  generation: 1
+  name: frontend
 spec:
-  template: 
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    name: frontend
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
     metadata:
+      creationTimestamp: null
       labels:
-        name: "frontend"
+        name: frontend
     spec:
       containers:
-        - name: "helloworld"
-          image: "openshift/origin-ruby-sample"
-          ports:
-            - containerPort: 8080
-              protocol: "TCP"
-  replicas: 5 
+      - image: openshift/origin-ruby-sample
+        imagePullPolicy: Always
+        name: helloworld
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  test: false
   triggers:
-    - type: "ConfigChange" 
-    - type: "ImageChange" 
-      imageChangeParams:
-        automatic: true
-        containerNames:
-          - "helloworld"
-        from:
-          kind: "ImageStreamTag"
-          name: "origin-ruby-sample:latest"
-  strategy: 
-    type: "Rolling"
-  paused: false 
-  revisionHistoryLimit: 2 
-  minReadySeconds: 0 
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - helloworld
+      from:
+        kind: ImageStreamTag
+        name: origin-ruby-sample:latest
+        namespace: default
+    type: ImageChange
+status:
+  availableReplicas: 0
+  conditions:
+  - lastTransitionTime: "2020-03-30T09:27:41Z"
+    lastUpdateTime: "2020-03-30T09:27:41Z"
+    message: Deployment config does not have minimum availability.
+    status: "False"
+    type: Available
+  latestVersion: 0
+  observedGeneration: 1
+  replicas: 0
+  unavailableReplicas: 0
+  updatedReplicas: 0
