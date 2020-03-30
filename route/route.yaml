@@ -1,7 +1,6 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  labels:
     app.kubernetes.io/component: server
     app.kubernetes.io/name: test-route
   name: test-route
@@ -16,3 +15,15 @@ spec:
     name: test-toute
     weight: 100
   wildcardPolicy: None
+status:
+  ingress:
+  - conditions:
+    - lastTransitionTime: "2020-03-30T09:19:24Z"
+      message: a route in another namespace holds www.test-route.com and is older
+        than test-route
+      reason: HostAlreadyClaimed
+      status: "False"
+      type: Admitted
+    host: www.test-route.com
+    routerName: router
+    wildcardPolicy: None
