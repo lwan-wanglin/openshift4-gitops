@@ -1,0 +1,12 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  labels:
+    app: ruby-sample-build
+    template: application-template-stibuild
+  name: origin-ruby-sample
+spec:
+  lookupPolicy:
+    local: false
