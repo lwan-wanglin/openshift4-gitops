@@ -2,29 +2,29 @@ apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
   labels:
-    machine.openshift.io/cluster-api-cluster: lwan0211-1-55zfj
-  name: lwan0211-1-55zfj-additional-compute
+    machine.openshift.io/cluster-api-cluster: lwanjk0521-2-fqc7w
+  name: lwanjk0521-2-fqc7w-additional-compute
   namespace: openshift-machine-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      machine.openshift.io/cluster-api-cluster: lwan0211-1-55zfj
+      machine.openshift.io/cluster-api-cluster: lwanjk0521-2-fqc7w
       machine.openshift.io/cluster-api-machine-role: worker
       machine.openshift.io/cluster-api-machine-type: worker
-      machine.openshift.io/cluster-api-machineset: lwan0211-1-55zfj-worker-us-east-2c
+      machine.openshift.io/cluster-api-machineset: lwanjk0521-2-fqc7w-worker-us-east-2d
   template:
     metadata:
       labels:
-        machine.openshift.io/cluster-api-cluster: lwan0211-1-55zfj
+        machine.openshift.io/cluster-api-cluster: lwanjk0521-2-fqc7w
         machine.openshift.io/cluster-api-machine-role: worker
         machine.openshift.io/cluster-api-machine-type: worker
-        machine.openshift.io/cluster-api-machineset: lwan0211-1-55zfj-worker-us-east-2c
+        machine.openshift.io/cluster-api-machineset: lwanjk0521-2-fqc7w-worker-us-east-2d
     spec:
       providerSpec:
         value:
           ami:
-            id: ami-0a2dc10123f9c6987
+            id: ami-070c6257b10036038
           apiVersion: awsproviderconfig.openshift.io/v1beta1
           blockDevices:
           - ebs:
@@ -39,20 +39,20 @@ spec:
           instanceType: m4.large
           kind: AWSMachineProviderConfig
           placement:
-            availabilityZone: us-east-2c
+            availabilityZone: us-east-2d
             region: us-east-2
           securityGroups:
           - filters:
             - name: tag:Name
               values:
-              - lwan0211-1-55zfj-worker-sg
+              - lwanjk0521-2-fqc7w-worker-sg
           subnet:
             filters:
             - name: tag:Name
               values:
-              - lwan0211-1-55zfj-private-us-east-2c
+              - lwanjk0521-2-fqc7w-private-us-east-2d
           tags:
-          - name: kubernetes.io/cluster/lwan0211-1-55zfj
+          - name: kubernetes.io/cluster/lwanjk0521-2-fqc7w
             value: owned
           userDataSecret:
             name: worker-user-data
