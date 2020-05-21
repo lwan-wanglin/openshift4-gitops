@@ -35,7 +35,7 @@ spec:
             name: aws-cloud-credentials
           deviceIndex: 0
           iamInstanceProfile:
-            id: lwan0211-1-55zfj-worker-profile
+            id: lwanjk0521-2-fqc7w-worker-profile
           instanceType: m4.large
           kind: AWSMachineProviderConfig
           placement:
