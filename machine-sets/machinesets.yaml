@@ -12,14 +12,14 @@ spec:
       machine.openshift.io/cluster-api-cluster: lwanjk0521-2-fqc7w
       machine.openshift.io/cluster-api-machine-role: worker
       machine.openshift.io/cluster-api-machine-type: worker
-      machine.openshift.io/cluster-api-machineset: lwanjk0521-2-fqc7w-worker-us-east-2d
+      machine.openshift.io/cluster-api-machineset: lwanjk0521-2-fqc7w-worker-us-east-2f
   template:
     metadata:
       labels:
         machine.openshift.io/cluster-api-cluster: lwanjk0521-2-fqc7w
         machine.openshift.io/cluster-api-machine-role: worker
         machine.openshift.io/cluster-api-machine-type: worker
-        machine.openshift.io/cluster-api-machineset: lwanjk0521-2-fqc7w-worker-us-east-2d
+        machine.openshift.io/cluster-api-machineset: lwanjk0521-2-fqc7w-worker-us-east-2f
     spec:
       providerSpec:
         value:
@@ -39,7 +39,7 @@ spec:
           instanceType: m4.large
           kind: AWSMachineProviderConfig
           placement:
-            availabilityZone: us-east-2d
+            availabilityZone: us-east-2f
             region: us-east-2
           securityGroups:
           - filters:
@@ -50,7 +50,7 @@ spec:
             filters:
             - name: tag:Name
               values:
-              - lwanjk0521-2-fqc7w-private-us-east-2d
+              - lwanjk0521-2-fqc7w-private-us-east-2f
           tags:
           - name: kubernetes.io/cluster/lwanjk0521-2-fqc7w
             value: owned
